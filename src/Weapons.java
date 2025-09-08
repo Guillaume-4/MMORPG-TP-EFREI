@@ -1,9 +1,9 @@
 public class Weapons {
 
-    String name;
-    int damage;
-    int durability;
-    int weight;
+    private String name;
+    private int damage;
+    private int durability;
+    private int weight;
     
     // Constructor
 

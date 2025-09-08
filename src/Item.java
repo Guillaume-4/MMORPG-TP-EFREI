@@ -1,10 +1,10 @@
 
 public class Item {
-    String itemName;
-    int itemPrice;
+    private String itemName;
+    private int itemPrice;
 
     // Constructor
-    
+
     public Item(String itemName, int itemPrice) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;

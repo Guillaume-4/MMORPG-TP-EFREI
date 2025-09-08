@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Shop {
-    Item item;
+    private Item item;
     ArrayList<Item> listItem;
 
 
@@ -13,10 +13,13 @@ public class Shop {
 
     // Functions
     public void displayItem() {
+        var compteur = 1;
         System.out.println("Items available in the shop:");
         for (Item item : listItem) {
-            System.out.println("- " + item.getItemName() + ": " + item.getItemPrice() + " gold");
+            System.out.println(compteur + item.getItemName() + ": " + item.getItemPrice() + " gold");
+            compteur++;
         }
+        System.out.println(compteur + "Exit");
     }
 
     public void AddItem(Item item) {

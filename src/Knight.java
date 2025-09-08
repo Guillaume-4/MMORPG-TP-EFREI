@@ -1,11 +1,12 @@
 public class Knight{
     Weapons weapon;
-    String name;
-    int health;
-    int defense;
-    int level;
-    int experience;
-    int gold;
+    private String name;
+    private int health;
+    private int defense;
+    private int level;
+    private int experience;
+    private int gold;
+    private boolean isGuard;
 
     // Constructor
     public Knight(String name, int health, int defense, int gold, Weapons weapon) {
@@ -20,15 +21,15 @@ public class Knight{
 
     // Functions
 
-    public String fight(Knight knight, Knight enemy) {
-        while(knight.getHealth() > 0 && enemy.getHealth() > 0) {
-            knight.attack(enemy);
+    public String fight(Knight enemy) {
+        while(this.getHealth() > 0 && enemy.getHealth() > 0) {
+            this.attack(enemy);
             if (enemy.getHealth() > 0) {
-                enemy.attack(knight);
+                enemy.attack(this);
             }
         }
-        if (knight.getHealth() > 0) {
-            return knight.getName() + " wins the battle!";
+        if (this.getHealth() > 0) {
+            return this.getName() + " wins the battle!";
         } else {
             return enemy.getName() + " wins the battle!";
         }
@@ -51,6 +52,7 @@ public class Knight{
         this.level += 1;
         this.health += 10;
         this.defense += 2;
+        this.experience = 0;
         System.out.println(this.name + " has leveled up to level " + this.level + "!");
     }
 
@@ -74,7 +76,12 @@ public class Knight{
         }
         int damageDealt = this.weapon.getDamage() - enemy.getDefense();
         if (damageDealt < 0) damageDealt = 0;
+        if(enemy.isGuard) {
+            damageDealt /= 2;
+            System.out.println(enemy.getName() + " is guarding and takes half damage!");
+        }
         enemy.setHealth(enemy.getHealth() - damageDealt);
+        enemy.isGuard = false; 
         this.weapon.setDurability(this.weapon.getDurability() - 1);
         System.out.println(this.name + " attacks " + enemy.getName() + " with " + this.weapon.getName() + " for " + damageDealt + " damage.");
         if (enemy.getHealth() <= 0) {
@@ -107,8 +114,14 @@ public class Knight{
     public Weapons getWeapon() {
         return weapon;
     }
+    public boolean getIsGuard() {
+        return isGuard;
+    }
     public void setName(String name) {
         this.name = name;
+    }
+    public void setIsGuard(boolean isGuard) {
+        this.isGuard = isGuard;
     }
     public void setHealth(int health) {
         this.health = health;
