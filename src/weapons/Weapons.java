@@ -1,16 +1,15 @@
+package weapons;
 public class Weapons {
 
     private String name;
     private int damage;
-    private int durability;
     private int weight;
     
     // Constructor
 
-    public Weapons(String name, int damage, int durability, int weight) {
+    public Weapons(String name, int damage,int weight) {
         this.name = name;
         this.damage = damage;
-        this.durability = durability;
         this.weight = weight;
     }
     
@@ -22,15 +21,11 @@ public class Weapons {
     public int getDamage() {
         return damage;
     }
-    public int getDurability() {
-        return durability;
-    }
+
     public int getWeight() {
         return weight;
     }
-    public void setDurability(int durability) {
-        this.durability = durability;
-    }
+
     public void setDamage(int damage) {
         this.damage = damage;
     }

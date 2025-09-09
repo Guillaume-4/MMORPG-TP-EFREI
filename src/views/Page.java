@@ -1,3 +1,6 @@
+package views;
+import shop.Shop;
+
 public class Page {
     private String actualPage = "Home";
 
@@ -48,8 +51,7 @@ public class Page {
                     switch (choice) {
                         case "1":
                             this.resetConsole();
-                            displayShop(shop);
-                            actualPage = "shopDisplay";
+                            this.setActualPage("shopDisplay");
                             break;
                         case "2":
                             this.resetConsole();
@@ -82,6 +84,10 @@ public class Page {
                             this.resetConsole();
                             System.out.println("Invalid choice, please try again.");
                     }
+                    break;
+                case "shopDisplay":
+                    this.resetConsole();
+                    displayShop(shop);
                     break;
                 default:
                     System.out.println("Invalid page, returning to Home.");
