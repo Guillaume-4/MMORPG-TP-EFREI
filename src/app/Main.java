@@ -2,8 +2,11 @@ package app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.text.html.parser.Entity;
+
 import entities.Knight;
 import entities.elf;
+import entities.entity;
 import entities.goblin;
 import entities.orc;
 import items.Item;
@@ -23,10 +26,10 @@ public class Main {
         Weapons axe = new Weapons("Axe", 10, 7);
         Weapons bow = new Weapons("Bow", 8, 4);
 
-        Knight knight = new Knight("Arthur", 100, 5, sword);
-        goblin goblin = new goblin("Goblin", 50, 2, stick);
-        orc orc = new orc("Orc", 80, 3, axe);
-        elf elf = new elf("Elf", 60, 4, bow);
+        Knight knight = new Knight("Arthur", 100, 5, sword, "knight");
+        goblin goblin = new goblin("Goblin", 50, 2, stick, "goblin");
+        orc orc = new orc("Orc", 80, 3, axe, "orc");
+        elf elf = new elf("Elf", 60, 4, bow, "elf");
 
         listEnemyKnight.add(goblin);
         listEnemyKnight.add(orc);
@@ -51,7 +54,8 @@ public class Main {
         while (page.getActualPage() != "Exit") {
             System.out.println(page.jumpToPage());
             String choice = scanner.nextLine();
-            page.goToPage(choice, shop);
+            entity enemyName = (entity) listEnemyKnight.get((int)(Math.random() * listEnemyKnight.size()));
+            page.goToPage(choice, shop, knight, enemyName);
         }
 
         scanner.close();

@@ -1,8 +1,11 @@
 package views;
 import shop.Shop;
+import entities.entity;
+import level.level;
 
 public class Page {
     private String actualPage = "Home";
+    level newLevel = new level(1);
 
 
     public String jumpToPage(){
@@ -26,7 +29,7 @@ public class Page {
 
     // Methods to display pages
 
-    public void goToPage(String choice, Shop shop){
+    public void goToPage(String choice, Shop shop, entity knight, entity enemy){
         switch (this.getActualPage()) {
                 case "Home":
                     switch (choice) {
@@ -39,8 +42,15 @@ public class Page {
                             this.resetConsole();
                             break;
                         case "3":
+                            this.resetConsole();
+                            System.out.println(knight.toString());
+                            break;
+                        case "4":
                             this.setActualPage("Exit");
                             this.resetConsole();
+                            break;
+                        case "5":
+                            resetConsole();
                             break;
                         default:
                             this.resetConsole();
@@ -66,17 +76,11 @@ public class Page {
                     switch (choice) {
                         case "1":
                             this.resetConsole();
-                            System.out.println("You attacked the enemy!");
+                            newLevel.playLevel(knight, enemy);
+                            this.setActualPage("Home");
                             break;
+                        
                         case "2":
-                            this.resetConsole();
-                            System.out.println("You are guarding!");
-                            break;
-                        case "3":
-                            this.resetConsole();
-                            System.out.println("You used an item!");
-                            break;
-                        case "4":
                             this.setActualPage("Home");
                             this.resetConsole();
                             break;
@@ -97,7 +101,7 @@ public class Page {
     }
 
     public static String Home(){
-        return "1. Fight\n2. Visit Shop\n3. Exit";
+        return "1. Fight\n2. Visit Shop\n3. View Stats \n4. Exit \n5. Clear Console ";
     }
 
     public static String Shop(){
@@ -105,7 +109,7 @@ public class Page {
     }
 
     public static String Fight(){
-        return "1. Attack\n2. Guard\n3. Use Item\n4. Run";
+        return "1. Do you want to go to next level ?\n2. Run";
     }
 
     public static void displayShop(Shop shop){

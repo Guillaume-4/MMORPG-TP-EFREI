@@ -5,8 +5,8 @@ import weapons.Weapons;
 public class Knight extends entity {
 
     // Constructor
-    public Knight(String name, int health, int defense, Weapons weapon) {
-        super(name, health, defense,weapon);
+    public Knight(String name, int health, int defense, Weapons weapon, String type) {
+        super(name, health, defense,weapon, type);
         this.level = 1;
         this.experience = 0;
         this.weapon = weapon;

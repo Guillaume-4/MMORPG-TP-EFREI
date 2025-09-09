@@ -11,19 +11,22 @@ public class entity {
     protected boolean isGuard;
     protected int level;
     protected int experience;
+    private int maxHealth;
+    protected String type;
 
-
-    public entity(String name, int health, int defense, Weapons weapon) {
+    public entity(String name, int health, int defense, Weapons weapon, String type) {
         this.name = name;
         this.health = health;
         this.defense = defense;
         this.weapon = weapon;
+        this.maxHealth = health;
         gold = 0;
         this.isGuard = false;
+        this.type = type;
     }
+    
 
     public void attack(entity enemy) {
-        
         int damageDealt = this.weapon.getDamage() - enemy.getDefense();
         if (damageDealt < 0) damageDealt = 0;
         if(enemy.isGuard) {
@@ -36,8 +39,11 @@ public class entity {
         System.out.println(this.name + " attacks " + enemy.getName() + " with " + this.weapon.getName() + " for " + damageDealt + " damage.");
         if (enemy.getHealth() <= 0) {
             System.out.println(enemy.getName() + " has been defeated!");
-            this.gainExperience(50);
-            this.gainGold(enemy.getGold());
+            if (this.type == "knight" ){
+                this.gainExperience(50);
+                this.gainGold(enemy.getGold());
+            }
+            
         }
     }
 
@@ -64,21 +70,27 @@ public class entity {
     }
 
 
-    public String fight(Knight enemy) {
+    public void resetHP() {
+        this.health = this.maxHealth;
+    }
+
+    public boolean fight(entity enemy) {
         while(this.getHealth() > 0 && enemy.getHealth() > 0) {
             this.attack(enemy);
             if (enemy.getHealth() > 0) {
                 enemy.attack(this);
             }
         }
-        if (this.getHealth() > 0) {
-            return this.getName() + " wins the battle!";
-        } else {
-            return enemy.getName() + " wins the battle!";
-        }
+        return this.getHealth() > 0 ? true : false;
 
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
 
     public int getDefense() {
         return defense;
