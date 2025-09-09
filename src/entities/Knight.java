@@ -1,8 +1,8 @@
-package entities;
+package Entities;
 
 import weapons.Weapons;
 
-public class Knight extends entity {
+public class Knight extends Entity {
 
     // Constructor
     public Knight(String name, int health, int defense, Weapons weapon, String type) {

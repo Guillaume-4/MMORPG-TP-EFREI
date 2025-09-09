@@ -1,8 +1,8 @@
-package entities;
+package Entities;
 
 import weapons.Weapons;
 
-public class entity {
+public class Entity {
     Weapons weapon;
     protected String name;
     protected int health;
@@ -14,7 +14,7 @@ public class entity {
     private int maxHealth;
     protected String type;
 
-    public entity(String name, int health, int defense, Weapons weapon, String type) {
+    public Entity(String name, int health, int defense, Weapons weapon, String type) {
         this.name = name;
         this.health = health;
         this.defense = defense;
@@ -26,7 +26,7 @@ public class entity {
     }
     
 
-    public void attack(entity enemy) {
+    public void attack(Entity enemy) {
         int damageDealt = this.weapon.getDamage() - enemy.getDefense();
         if (damageDealt < 0) damageDealt = 0;
         if(enemy.isGuard) {
@@ -74,7 +74,7 @@ public class entity {
         this.health = this.maxHealth;
     }
 
-    public boolean fight(entity enemy) {
+    public boolean fight(Entity enemy) {
         while(this.getHealth() > 0 && enemy.getHealth() > 0) {
             this.attack(enemy);
             if (enemy.getHealth() > 0) {

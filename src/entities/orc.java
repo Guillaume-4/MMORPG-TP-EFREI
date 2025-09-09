@@ -1,10 +1,10 @@
-package entities;
+package Entities;
 
 import weapons.Weapons;
 
-public class orc extends entity {
+public class Orc extends Entity {
 
-    public orc(String name, int health, int defense, Weapons weapon, String type) {
+    public Orc(String name, int health, int defense, Weapons weapon, String type) {
         super(name, health, defense, weapon, type);
         this.gold = 20;
     }

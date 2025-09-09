@@ -1,14 +1,15 @@
 package views;
-import shop.Shop;
-import entities.entity;
-import level.level;
+import Entities.Entity;
+import Entities.Knight;
+import Level.Level;
+import Shop.Shop;
 
 public class Page {
     private String actualPage = "Home";
-    level newLevel = new level(1);
+    Level newLevel = new Level(1);
 
 
-    public String jumpToPage(){
+    public String jumpToPage(Shop shop){
         try {
             switch(actualPage){
                 case "Home":
@@ -17,6 +18,9 @@ public class Page {
                     return Shop();
                 case "Fight":
                     return Fight();
+                case "displayShop":
+                    displayShop(shop);
+                    return "";
                 default:
                     return "Invalid page";
             }
@@ -29,7 +33,7 @@ public class Page {
 
     // Methods to display pages
 
-    public void goToPage(String choice, Shop shop, entity knight, entity enemy){
+    public void goToPage(String choice, Shop shop, Knight knight, Entity enemy){
         switch (this.getActualPage()) {
                 case "Home":
                     switch (choice) {
@@ -61,7 +65,8 @@ public class Page {
                     switch (choice) {
                         case "1":
                             this.resetConsole();
-                            this.setActualPage("shopDisplay");
+                            displayShop(shop);
+                            this.setActualPage("displayShop");
                             break;
                         case "2":
                             this.resetConsole();
@@ -90,9 +95,16 @@ public class Page {
                     }
                     break;
                 case "shopDisplay":
-                    this.resetConsole();
-                    displayShop(shop);
-                    break;
+                switch (choice) {
+                    case "1":
+                        this.resetConsole();
+                        displayShop(shop);
+                        break;
+                    case "3":
+                        this.setActualPage("Shop");
+                        this.resetConsole();
+                        break;
+                }
                 default:
                     System.out.println("Invalid page, returning to Home.");
                     this.setActualPage("Home");

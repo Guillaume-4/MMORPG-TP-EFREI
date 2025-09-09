@@ -1,8 +1,8 @@
-package entities;
+package Entities;
 
-public class elf extends entity {
+public class Elf extends Entity {
 
-    public elf(String name, int health, int defense, weapons.Weapons weapon, String type) {
+    public Elf(String name, int health, int defense, weapons.Weapons weapon, String type) {
         super(name, health, defense, weapon, type);
         this.gold = 30;
     }

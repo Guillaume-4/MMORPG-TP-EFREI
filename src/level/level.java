@@ -1,8 +1,8 @@
-package level;
+package Level;
 
-import entities.entity;
+import Entities.Entity;
 
-public class level {
+public class Level {
     private int levelNumber;
     private int rewardGold;
 
@@ -11,7 +11,7 @@ public class level {
         System.out.println("Level " + levelNumber + " - Reward: " + rewardGold + " gold");
     }
 
-    public void playLevel(entity knight,entity enemy) {
+    public void playLevel(Entity knight,Entity enemy) {
         System.out.println("Playing level " + levelNumber + "...");
         boolean isSuccess = knight.fight(enemy);
         if (!isSuccess) {
@@ -26,7 +26,7 @@ public class level {
         }
     }
 
-    public void nextLevel(entity enemy){
+    public void nextLevel(Entity enemy){
         System.out.println("Congratulations! You've advanced to level " + this.levelNumber + " and earned " + this.rewardGold + " gold!");
         this.levelNumber += 1;
         this.rewardGold += 10; 
@@ -38,7 +38,7 @@ public class level {
         
     }
 
-    public level(int levelNumber) {
+    public Level(int levelNumber) {
         this.levelNumber = levelNumber;
         this.rewardGold = 10;
     }

@@ -2,15 +2,14 @@ package app;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.text.html.parser.Entity;
+import Entities.Entity;
 
-import entities.Knight;
-import entities.elf;
-import entities.entity;
-import entities.goblin;
-import entities.orc;
+import Entities.Elf;
+import Entities.Goblin;
+import Entities.Knight;
+import Entities.Orc;
+import Shop.Shop;
 import items.Item;
-import shop.Shop;
 import views.Page;
 import weapons.Weapons;
 
@@ -27,9 +26,9 @@ public class Main {
         Weapons bow = new Weapons("Bow", 8, 4);
 
         Knight knight = new Knight("Arthur", 100, 5, sword, "knight");
-        goblin goblin = new goblin("Goblin", 50, 2, stick, "goblin");
-        orc orc = new orc("Orc", 80, 3, axe, "orc");
-        elf elf = new elf("Elf", 60, 4, bow, "elf");
+        Goblin goblin = new Goblin("Goblin", 50, 2, stick, "goblin");
+        Orc orc = new Orc("Orc", 80, 3, axe, "orc");
+        Elf elf = new Elf("Elf", 60, 4, bow, "elf");
 
         listEnemyKnight.add(goblin);
         listEnemyKnight.add(orc);
@@ -52,9 +51,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (page.getActualPage() != "Exit") {
-            System.out.println(page.jumpToPage());
+            System.out.println(page.jumpToPage(shop));
             String choice = scanner.nextLine();
-            entity enemyName = (entity) listEnemyKnight.get((int)(Math.random() * listEnemyKnight.size()));
+            Entity enemyName = (Entity) listEnemyKnight.get((int)(Math.random() * listEnemyKnight.size()));
             page.goToPage(choice, shop, knight, enemyName);
         }
 
