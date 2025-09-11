@@ -8,13 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import Entities.Knight;
+import Level.Level;
+import Shop.Shop;
 
 public class Save {
     private Path savePath = Path.of("src/Settings/Save.txt");
     private HashMap<String, String> saveData = new HashMap<>();
-    public void saveGame(Knight knight){
+    public void saveGame(Knight knight, Shop shop, Level level){
         
         try{
+            knight.resetHP();
             this.saveData.put("character", knight.getName());
             this.saveData.put("health", String.valueOf(knight.getHealth()));
             this.saveData.put("level", String.valueOf(knight.getLevel()));
@@ -23,6 +26,17 @@ public class Save {
             this.saveData.put("weaponDamage", String.valueOf(knight.getWeapon().getDamage()));
             this.saveData.put("weaponRarity", String.valueOf(knight.getWeapon().getRarity()));
             this.saveData.put("gold", String.valueOf(knight.getGold()));
+            this.saveData.put("defense", String.valueOf(knight.getDefense()));
+            this.saveData.put("shield_name", knight.getShield().getName());
+            this.saveData.put("shop_items", shop.getItemsForSave());
+            this.saveData.put("level_number", String.valueOf(level.getLevelNumber()));
+            this.saveData.put("level_gold_reward", String.valueOf(level.getRewardGold()));
+            StringBuilder inventoryBuilder = new StringBuilder();
+            knight.getInventory().getItems().forEach((item, count) -> inventoryBuilder.append(item).append(":").append(count).append(","));
+            if (inventoryBuilder.length() > 0) {
+                inventoryBuilder.setLength(inventoryBuilder.length() - 1); // Remove trailing comma
+            }
+            this.saveData.put("inventory", inventoryBuilder.toString());
             StringBuilder sb = new StringBuilder();
             this.saveData.forEach((key, value) -> sb.append(key).append("=").append(value).append("\n"));
             Files.write(savePath, sb.toString().getBytes());
@@ -57,6 +71,27 @@ public class Save {
             }
         }
         return defaultValue;
+    }
+
+    public Items.Inventory getInventoryFromString(String inventoryString) {
+        Items.Inventory inventory = new Items.Inventory();
+        if (inventoryString == null || inventoryString.isEmpty()) {
+            return inventory;
+        }
+        String[] items = inventoryString.split(",");
+        for (String itemEntry : items) {
+            String[] parts = itemEntry.split(":");
+            if (parts.length == 2) {
+                String itemName = parts[0];
+                try {
+                    int itemCount = Integer.parseInt(parts[1]);
+                    inventory.addItem(itemName, itemCount);
+                } catch (NumberFormatException e) {
+                    // Ignore invalid number format
+                }
+            }
+        }
+        return inventory;
     }
 
 }

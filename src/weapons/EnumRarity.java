@@ -1,6 +1,6 @@
 package weapons;
 
-public enum EnumWeaponRarity {
+public enum EnumRarity {
     COMMON,
     UNCOMMON,
     RARE,
