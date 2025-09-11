@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import Charms.Charms;
 import Entities.Entity;
 
 import Entities.Elf;
@@ -46,9 +47,14 @@ public class Main {
         Shields steelShield = new Shields("Steel Shield", 35, EnumRarity.RARE, 35);
         Shields dragonShield = new Shields("Dragon Shield", 50, EnumRarity.LEGENDARY, 50);
 
+        // Charm
+        Charms atq_charms = new Charms("Attack Charms", 50, EnumRarity.RARE, 20f, 0f);
+        Charms def_charms = new Charms("Defense Charms", 50, EnumRarity.RARE, 0f, 20f);
+        Charms legendary_charms = new Charms("Legendary Charms", 150, EnumRarity.LEGENDARY, 40f, 40f);
 
 
-        Knight knight = new Knight("Arthur", 100, 5, stone_sword, "knight", 100, 0, 1, 0, new Items.Inventory(), woodenShield);
+
+        Knight knight = new Knight("Arthur", 100, 5, stone_sword, "knight", 100, 0, 1, 0, new Items.Inventory(), woodenShield, null);
         Goblin goblin = new Goblin("Goblin", 50, 2, stick, "goblin");
         Orc orc = new Orc("Orc", 80, 3, axe, "orc");
         Elf elf = new Elf("Elf", 60, 4, bow, "elf");
@@ -68,6 +74,9 @@ public class Main {
         shop.AddItem(iron_sword);
         shop.AddItem(steel_sword);
         shop.AddItem(dragon_sword);
+        shop.AddItem(atq_charms);
+        shop.AddItem(def_charms);
+        shop.AddItem(legendary_charms);
 
 
 
@@ -127,6 +136,7 @@ public class Main {
                     knight.setMaxHealth(knight.getHealth());
                     knight.setInventory(save.getInventoryFromString(saveData.get("inventory")));
                     knight.setShield(Shields.getShield(saveData.get("shield_name")));
+                    knight.setCharm(saveData.get("charm") == null ? null : Charms.getCharm(saveData.get("charm")));
                     knight.setWeapon(new Weapons(
                         saveData.get("weaponName"),
                         save.getIntOrDefault(saveData, "weaponDamage", 0),
@@ -135,10 +145,20 @@ public class Main {
                     ));
                     knight.setGold(save.getIntOrDefault(saveData, "gold", 0));
 
-                    shop.setItemsFromSave(saveData.get("shop_items"));
-
                     newLevel.setLevelNumber(save.getIntOrDefault(saveData, "level_number", 0));
                     newLevel.setRewardGold(save.getIntOrDefault(saveData, "level_gold_reward", 20));
+
+                    listEnemyKnight.forEach((Entity) -> {
+                        Entity.setName(saveData.get("enemy_name"));
+                        Entity.setHealth(Entity.getHealth() * newLevel.getLevelNumber());
+                        Entity.setDefense(Entity.getDefense() * newLevel.getLevelNumber());
+                        Entity.setGold(Entity.getGold() * newLevel.getLevelNumber());
+                        Entity.setMaxHealth(Entity.getHealth());
+
+                    });
+                    shop.setItemsFromSave(saveData.get("shop_items"));
+
+                    
 
                     System.out.println("Welcome back " + knight.getName() + "!");
 

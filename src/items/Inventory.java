@@ -1,6 +1,7 @@
 package Items;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Inventory {
     private HashMap<String, Integer> items;
@@ -27,5 +28,19 @@ public class Inventory {
 
     public HashMap<String, Integer> getItems() {
         return items;
+    }
+
+    public String toString() {
+        if (items == null || items.isEmpty()) {
+            return "You are not carrying any items.";
+        }
+
+        StringBuilder sb = new StringBuilder("=== Inventory ===\n");
+        for (Map.Entry<String, Integer> entry : items.entrySet()) {
+            sb.append("- ").append(entry.getKey())
+            .append(" x").append(entry.getValue()).append("\n");
+        }
+        sb.append("=================");
+        return sb.toString();
     }
 }

@@ -1,5 +1,6 @@
 package Entities;
 
+import Charms.Charms;
 import weapons.Weapons;
 
 public class Entity {
@@ -13,8 +14,11 @@ public class Entity {
     protected int experience;
     private int maxHealth;
     protected String type;
+    protected Charms charm;
+    private int last_enemy_health;
+    private int last_player_health;
 
-    public Entity(String name, int health, int defense, Weapons weapon, String type, int maxHealth, int gold, int level, int experience) {
+    public Entity(String name, int health, int defense, Weapons weapon, String type, int maxHealth, int gold, int level, int experience, Charms charm) {
         this.name = name;
         this.health = health;
         this.defense = defense;
@@ -25,11 +29,12 @@ public class Entity {
         this.experience = experience;
         this.isGuard = false;
         this.type = type;
+        this.charm = charm;
     }
     
 
-    public void attack(Entity enemy) {
-        int damageDealt = this.weapon.getDamage() - enemy.getDefense();
+    public Integer attack(Entity enemy) {
+        int damageDealt = (int)(this.weapon.getDamage() * (this.charm != null ? this.charm.getAtq_bonus().floatValue() : 1)) - enemy.getDefense();
         if (damageDealt < 0) damageDealt = 0;
         if(enemy.isGuard) {
             damageDealt /= 2;
@@ -47,6 +52,7 @@ public class Entity {
             }
             
         }
+        return enemy.getHealth();
     }
 
     public void gainExperience(int exp) {
@@ -78,12 +84,16 @@ public class Entity {
 
     public boolean fight(Entity enemy) {
         while(this.getHealth() > 0 && enemy.getHealth() > 0) {
-            this.attack(enemy);
+            this.last_enemy_health = this.attack(enemy);
             if (enemy.getHealth() > 0) {
-                enemy.attack(this);
+                this.last_player_health = enemy.attack(this);
+                if(enemy.getHealth() - this.last_enemy_health == enemy.getHealth() && this.getHealth() - this.last_player_health == this.getHealth()){
+                    System.out.println("Fight defeated because nobody lose health");
+                    break;
+                }
             }
         }
-        return this.getHealth() > 0 ? true : false;
+        return enemy.getHealth() > 0 ? false : true;
 
     }
 

@@ -28,6 +28,7 @@ public class Save {
             this.saveData.put("gold", String.valueOf(knight.getGold()));
             this.saveData.put("defense", String.valueOf(knight.getDefense()));
             this.saveData.put("shield_name", knight.getShield().getName());
+            this.saveData.put("charm", knight.getCharm() == null ? null :knight.getCharm().getName());
             this.saveData.put("shop_items", shop.getItemsForSave());
             this.saveData.put("level_number", String.valueOf(level.getLevelNumber()));
             this.saveData.put("level_gold_reward", String.valueOf(level.getRewardGold()));
