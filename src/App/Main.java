@@ -90,20 +90,20 @@ public class Main {
                 System.out.println("""
             === Prologue ===
             
-            Tu ouvres les yeux dans une forêt obscure...
-            Le vent froid glisse entre les arbres, 
-            et une lueur étrange scintille au loin.
+            You open your eyes in a dark forest...
+            The cold wind whistles through the trees, 
+            and a strange glow flickers in the distance.
             
-            Tu sens ton cœur battre plus vite.
-            Une voix résonne dans ton esprit :
+            You feel your heart beating faster.
+            A voice echoes in your mind:
             
-            "Héros... ton aventure commence ici"
+            “Hero... your adventure begins here.”
             
-            La voix s'estompe... mais le chemin devant toi s'éclaire.
+            The voice fades... but the path ahead of you lights up.
             
-            === Bonne chance, aventurier ! ===
+            === Good luck, adventurer! ===
             
-            (Appuie sur une touche pour passer à la création de ton personnage)
+            (Press any key to proceed to character creation)
             """ );
                 scanner.nextLine();
                 config.put("tutorial", false);

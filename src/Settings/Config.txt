@@ -1,2 +1,2 @@
-tutorial=false
-first_character=false
+tutorial=true
+first_character=true
