@@ -1,0 +1,15 @@
+level=2
+health=100
+level_number=3
+weaponName=Stone Sword
+experience=20
+inventory=
+shield_name=Wooden Shield
+level_gold_reward=30
+gold=10
+character=Twisste
+charm=null
+defense=30
+shop_items=Iron Shield:25,Steel Shield:35,Dragon Shield:50,Iron Sword:25,Steel Sword:35,Dragon Sword:50,Attack Charms:50,Legendary Charms:150
+weaponRarity=COMMON
+weaponDamage=10
