@@ -4,13 +4,15 @@ public class Weapons {
     private String name;
     private int damage;
     private int weight;
+    private EnumWeaponRarity rarity;
     
     // Constructor
 
-    public Weapons(String name, int damage,int weight) {
+    public Weapons(String name, int damage,int weight, EnumWeaponRarity rarity) {
         this.name = name;
         this.damage = damage;
         this.weight = weight;
+        this.rarity = rarity;
     }
     
     // Getters and Setters
@@ -34,6 +36,9 @@ public class Weapons {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public EnumWeaponRarity getRarity() {
+        return rarity;
     }
 
 

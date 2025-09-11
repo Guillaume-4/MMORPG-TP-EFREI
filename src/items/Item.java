@@ -1,4 +1,4 @@
-package items;
+package Items;
 
 public class Item {
     private String itemName;
@@ -25,4 +25,5 @@ public class Item {
     public void setItemPrice(int itemPrice) {
         this.itemPrice = itemPrice;
     }
+
 }

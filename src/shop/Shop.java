@@ -1,7 +1,7 @@
 package Shop;
 import java.util.ArrayList;
 
-import items.Item;
+import Items.Item;
 
 public class Shop {
     private Item item;

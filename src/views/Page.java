@@ -1,4 +1,4 @@
-package views;
+package Views;
 import Entities.Entity;
 import Entities.Knight;
 import Level.Level;
@@ -105,6 +105,7 @@ public class Page {
                         this.resetConsole();
                         break;
                 }
+            
                 default:
                     System.out.println("Invalid page, returning to Home.");
                     this.setActualPage("Home");
@@ -123,6 +124,7 @@ public class Page {
     public static String Fight(){
         return "1. Do you want to go to next level ?\n2. Run";
     }
+
 
     public static void displayShop(Shop shop){
         shop.displayItem();

@@ -14,13 +14,15 @@ public class Entity {
     private int maxHealth;
     protected String type;
 
-    public Entity(String name, int health, int defense, Weapons weapon, String type) {
+    public Entity(String name, int health, int defense, Weapons weapon, String type, int maxHealth, int gold, int level, int experience) {
         this.name = name;
         this.health = health;
         this.defense = defense;
         this.weapon = weapon;
-        this.maxHealth = health;
-        gold = 0;
+        this.maxHealth = maxHealth;
+        this.gold = gold;
+        this.level = level;
+        this.experience = experience;
         this.isGuard = false;
         this.type = type;
     }
