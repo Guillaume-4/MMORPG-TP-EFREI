@@ -1,7 +1,6 @@
 package weapons;
 
 import Items.Item;
-import Shield.Shields;
 
 public class Weapons extends Item {
 

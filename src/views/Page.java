@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import Entities.Entity;
 import Entities.Knight;
-import Items.Inventory;
 import Items.Item;
 import Level.Level;
 import Shield.Shields;
