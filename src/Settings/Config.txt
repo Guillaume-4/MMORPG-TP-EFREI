@@ -1,2 +1,0 @@
-tutorial=false
-first_character=false
