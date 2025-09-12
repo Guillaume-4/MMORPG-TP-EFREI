@@ -3,6 +3,7 @@
 Un petit RPG en Java développé dans le cadre d’un projet d’apprentissage.
 Le jeu se joue dans la console et propose un système de combats, d’objets, d’inventaire et de progression.
 
+
 ## 🚀 Fonctionnalités
 
   - ✅ Création de personnages (Knight, Elf, Goblin, Orc, etc.)
@@ -23,7 +24,10 @@ Le jeu se joue dans la console et propose un système de combats, d’objets, d�
 
   - ✅ Sauvegarde/chargement de la partie
 
+
 ## 📂 Structure du projet
+
+```
 src/
 ├── App/
 │   └── Main.java            # Point d’entrée du jeu
@@ -36,6 +40,8 @@ src/
 ├── Shop/                    # Boutique
 ├── Views/                   # Affichage console (menus, pages)
 └── Weapons/                 # Armes
+```
+
 
 ## 🛠️ Installation
 
@@ -53,6 +59,7 @@ javac App/Main.java
 **Lancer le jeu :**
 
 java App.Main
+
 
 ## 📦 Générer un JAR exécutable
 
@@ -75,6 +82,7 @@ jar cfm RPG-TP-Efrei.jar manifest.txt App/*.class Entities/*.class Items/*.class
 
 java -jar RPG-TP-Efrei.jar
 
+
 ## 🎮 Exemple d’affichage
 ==================[ HOME ]==================
  1) Fight
@@ -85,6 +93,7 @@ java -jar RPG-TP-Efrei.jar
  6) Exit
  7) Clear Console
 ============================================
+
 
 ## 📌 Améliorations possibles
 
@@ -97,6 +106,7 @@ Sauvegardes multiples
 Effets spéciaux sur les armes/charms
 
 Interface graphique (Swing ou JavaFX)
+
 
 ## 👤 Auteur
 
