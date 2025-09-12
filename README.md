@@ -47,40 +47,42 @@ src/
 
 **Cloner le dépôt :**
 
+```
 git clone https://github.com/<TON-USERNAME>/RPG-TP-Efrei.git
 cd RPG-TP-Efrei/src
+```
 
 
 **Compiler le projet :**
 
-javac App/Main.java
+```javac App/Main.java```
 
 
 **Lancer le jeu :**
 
-java App.Main
+```java App.Main```
 
 
 ## 📦 Générer un JAR exécutable
 
 **Compiler toutes les classes :**
 
-javac App/*.java Entities/*.java Items/*.java Level/*.java Settings/*.java Shield/*.java Shop/*.java Views/*.java Weapons/*.java Charms/*.java
+```javac App/*.java Entities/*.java Items/*.java Level/*.java Settings/*.java Shield/*.java Shop/*.java Views/*.java Weapons/*.java Charms/*.java```
 
 
 **Créer un fichier manifest.txt :**
 
-Main-Class: App.Main
+```Main-Class: App.Main```
 
 
 **Générer le .jar :**
 
-jar cfm RPG-TP-Efrei.jar manifest.txt App/*.class Entities/*.class Items/*.class Level/*.class Settings/*.class Shield/*.class Shop/*.class Views/*.class Weapons/*.class Charms/*.class
+```jar cfm RPG-TP-Efrei.jar manifest.txt App/*.class Entities/*.class Items/*.class Level/*.class Settings/*.class Shield/*.class Shop/*.class Views/*.class Weapons/*.class Charms/*.class```
 
 
 **Lancer le .jar :**
 
-java -jar RPG-TP-Efrei.jar
+```java -jar RPG-TP-Efrei.jar```
 
 
 ## 🎮 Exemple d’affichage
@@ -111,4 +113,4 @@ Interface graphique (Swing ou JavaFX)
 ## 👤 Auteur
 
 Projet développé par Guillaume-4 dans le cadre du TP d’Efrei.
-📧 Contact : guillaume.blas4@gmail.com
+📧 Contact : ```guillaume.blas4@gmail.com```
