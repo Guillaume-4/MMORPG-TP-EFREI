@@ -48,7 +48,7 @@ src/
 **Cloner le dépôt :**
 
 ```
-git clone https://github.com/<TON-USERNAME>/RPG-TP-Efrei.git
+git clone https://github.com/Guillaume-4/RPG-TP-Efrei.git
 cd RPG-TP-Efrei/src
 ```
 
